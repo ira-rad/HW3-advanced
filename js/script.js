@@ -1,6 +1,6 @@
 //Function 1
 function getMaxDigit(number){
-    return number = String(number).split('').sort().reverse();
+    return number = String(number).split('').sort().reverse()[0];
 }
 
 //Function 2
@@ -68,17 +68,16 @@ function getConvertMoney(money) {
 }
 //Function 8
 
-function getRandomPassword(){
-    let length = getRandomPassword = 8;
-    if(!isNaN(length) && length > 0){
+function getRandomPassword(passwordLength = 8){
+    if(!isNaN(passwordLength) && passwordLength > 0){
         let password = [];
-        for(let i = 0; i < length; i++){
+        for(let i = 0; i < passwordLength; i++){
             password [i] = parseInt(Math.floor(Math.random() *10)); 
         }
         return password.join("")
     }
    else{
-       return "Введіть вірне значення "
+       return "Введіть вірне значення"
    } 
    
 }
@@ -112,7 +111,7 @@ function unique_letters(str) {
   
   
 
-document.writeln(`<p> №1:  ${getMaxDigit(867357909755)[0]}</p>`);
+document.writeln(`<p> №1:  ${getMaxDigit(867357909755)}</p>`);
 document.writeln(`<p> №2:  ${getCounterNumber(2,5)}</p>`);
 document.writeln(`<p> №3:  ${getCapitalLetter('irYnA')}</p>`);
 document.writeln(`<p> №4:  ${getSumWithoutTaxes(1000,19.5)}</p>`);
