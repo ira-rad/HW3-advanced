@@ -6,17 +6,22 @@ function getMaxDigit(number){
 //Function 2
 const getCounterNumber = function(base,exponent) {
     let result = base;
-    const posExponent = Math.abs(exponent);
+    const posExponent = exponent;
     if(posExponent === 0){
         result = 1;
-    } else if(posExponent > 0){
-        for (let i = 1; i < exponent; i++){
+    }  else if(posExponent > 0){
+         for (let i = 1; i < exponent; i++){
             result *= base;
-          }
-    
-          }
+          }   
+    } else if(posExponent < 0){
+        for (let i = 1; i < -1*exponent; i++){
+            result *= base;
+          }   
+          return 1/result;
+  }     
+
     return result
-  };
+};
   
 //Function 3
 function getCapitalLetter(name) {
@@ -62,11 +67,21 @@ function getConvertMoney(money) {
     }
 }
 //Function 8
-function getRandomPassword(){
-    var x = Math.floor(Math.random() * (99999999 - 10000000 + 1)) + 10000000;
-    return x
-}
 
+function getRandomPassword(){
+    let length = getRandomPassword = 8;
+    if(!isNaN(length) && length > 0){
+        let password = [];
+        for(let i = 0; i < length; i++){
+            password [i] = parseInt(Math.floor(Math.random() *10)); 
+        }
+        return password.join("")
+    }
+   else{
+       return "Введіть вірне значення "
+   } 
+   
+}
  //Function 9
 function getDeleteLetters(letter, word) {
     letter = letter.toLowerCase();
@@ -98,7 +113,7 @@ function unique_letters(str) {
   
 
 document.writeln(`<p> №1:  ${getMaxDigit(867357909755)[0]}</p>`);
-document.writeln(`<p> №2:  ${getCounterNumber(2,4)}</p>`);
+document.writeln(`<p> №2:  ${getCounterNumber(2,5)}</p>`);
 document.writeln(`<p> №3:  ${getCapitalLetter('irYnA')}</p>`);
 document.writeln(`<p> №4:  ${getSumWithoutTaxes(1000,19.5)}</p>`);
 document.writeln(`<p> №5:  ${getRandomNumber(1, 10)}</p>`);
@@ -108,4 +123,3 @@ document.writeln(`<p> №8:  ${getRandomPassword()}</p>`)
 document.writeln(`<p> №9:  ${getDeleteLetters('a', 'blablabla')}</p>`)
 document.writeln(`<p> №10: ${isPalyndrom('Я несу гусеня')}</p>`)
 document.writeln(`<p> №11: ${unique_letters('Бісквіт був дуже ніжним')}</p>`);
-
