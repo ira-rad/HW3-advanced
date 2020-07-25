@@ -1,26 +1,23 @@
 //Function 1
 function getMaxDigit(number){
-    return number = String(number).split('').sort().reverse()[0];
+    return String(number).split('').sort().reverse()[0];
 }
 
 //Function 2
 const getCounterNumber = function(base,exponent) {
     let result = base;
-    const posExponent = exponent;
-    if(posExponent === 0){
-        result = 1;
-    }  else if(posExponent > 0){
+    if(exponent === 0){
+        return 1;
+    }  else if(exponent > 0){
          for (let i = 1; i < exponent; i++){
             result *= base;
           }   
-    } else if(posExponent < 0){
+    } else if(exponent < 0){
         for (let i = 1; i < -1*exponent; i++){
             result *= base;
           }   
-          return 1/result;
   }     
-
-    return result
+  return exponent > 0 ? result : 1/result;
 };
   
 //Function 3
@@ -56,31 +53,27 @@ function getNumberRepetitions(str, a){
 
 // Function 7
 function getConvertMoney(money) {
-    if(String(money).split('').reverse()[0] === '$') {
-        money = (parseInt(money) * 27) + "UAH";
-        return money;
-    } else if (String(money).split('').reverse()[0] === "UAH") {
-        money= (parseInt(money) / 27) + "$";
-        return money;
-    } else {
+    
+        if (money.includes('$') || money.includes("UAH")) {
+        return money.includes('$') ? (parseInt(money) * 27) + "UAH" : (parseInt(money) / 27) + "$";
+        }
         return "Ви ввели невірні дані";
-    }
-}
+        }
+
 //Function 8
 
-function getRandomPassword(passwordLength = 8){
-    if(!isNaN(passwordLength) && passwordLength > 0){
-        let password = [];
-        for(let i = 0; i < passwordLength; i++){
-            password [i] = parseInt(Math.floor(Math.random() *10)); 
-        }
-        return password.join("")
+function getRandomPassword(passwordLength = 8) {
+    if (!isNaN(passwordLength) && passwordLength > 0) {
+    let password = '';
+    for (let i = 0; i < passwordLength; i++) {
+    password += parseInt(Math.floor(Math.random() * 10));
     }
-   else{
-       return "Введіть вірне значення"
-   } 
-   
-}
+    return password;
+    } else {
+    return "Введіть вірне значення"
+    }
+    }
+    
  //Function 9
 function getDeleteLetters(letter, word) {
     letter = letter.toLowerCase();
@@ -117,7 +110,7 @@ document.writeln(`<p> №3:  ${getCapitalLetter('irYnA')}</p>`);
 document.writeln(`<p> №4:  ${getSumWithoutTaxes(1000,19.5)}</p>`);
 document.writeln(`<p> №5:  ${getRandomNumber(1, 10)}</p>`);
 document.writeln(`<p> №6:  ${getNumberRepetitions(str, 'а')}</p>`)
-document.writeln(`<p> №7:  ${getConvertMoney('35$')}</p>`)
+document.writeln(`<p> №7:  ${getConvertMoney('270UAH')}</p>`)
 document.writeln(`<p> №8:  ${getRandomPassword()}</p>`)
 document.writeln(`<p> №9:  ${getDeleteLetters('a', 'blablabla')}</p>`)
 document.writeln(`<p> №10: ${isPalyndrom('Я несу гусеня')}</p>`)
